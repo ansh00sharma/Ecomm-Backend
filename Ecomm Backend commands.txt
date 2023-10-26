@@ -1,0 +1,11 @@
+################# Server commands ###############
+
+
+
+
+################# Database/Prisma commands ######
+
+---> npm start
+
+
+---> prisma db push
