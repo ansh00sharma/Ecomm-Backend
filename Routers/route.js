@@ -1,12 +1,12 @@
 import express from 'express';
-import {CheckController,CreateUser} from "../Controllers/SignUpController.js";
+import {CheckServer,CreateNewsUser} from "../Controllers/SignUpController.js";
+import {SignInUser} from "../Controllers/SignInController.js";
 
 const router = express.Router();
 
-
-router.get('/', CheckController);
-
-router.get('/CreateUser', CreateUser);
+router.get('/', CheckServer);
+router.get('/SignUp', CreateNewsUser);
+router.post('/SingIn', SignInUser);
 
 
 export default router;

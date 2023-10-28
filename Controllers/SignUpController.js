@@ -1,19 +1,16 @@
 import { PrismaClient } from '@prisma/client'
-import { newUser } from '../Services/CreateNewUserService.js';
-import { checkuser } from '../Services/CheckExistingUserService.js';
+import { CreatingNewUser } from '../Services/CreateNewUserService.js';
+import { CheckUser } from '../Services/CheckExistingUserService.js';
 
 const prisma = new PrismaClient()
 
-const CheckController = (req, res) => {
-
-	res.send('Hello World!');
-};
-
-const CreateUser = async (req, res) => {
+const CheckServer = (req,res) =>{
+  res.send("Express working lode");
+}
+const CreateNewsUser = async (req, res) => {
 
     var email_id = req.body['email_id'];
     var password = req.body['password'];
-    var token = req.body['token'];
 
     console.log("email :", email_id);
     try {
@@ -23,13 +20,14 @@ const CreateUser = async (req, res) => {
     
         try {
             // Check if the user already exists
-            const userExists = await checkuser(email_id);
+            // const userExists = await CheckUser(email_id);
+            const userExists = undefined;
         
             if (userExists) {
               res.send("User already exists.");
             } else {
               // Create a new user
-              await newUser(email_id, password, token);
+              await CreatingNewUser(email_id, password);
               res.send("Created new user successfully!");
             }
           } catch (error) {
@@ -42,4 +40,4 @@ const CreateUser = async (req, res) => {
     }
 };	
 
-export {CheckController ,CreateUser};
+export {CheckServer,CreateNewsUser};
